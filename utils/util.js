@@ -14,6 +14,34 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+// 没有传参返回0，1个参数认为0-x，两个参数取两者之间
+const getRandom = (min, max) => {
+  if (arguments.length === 1) {
+    max = arguments[0];
+    min = 0;
+  }
+  if (arguments.length === 0) {
+    return 0;
+  }
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  getRandom: getRandom
+}
+
+function createWordList(spellList, pingjiaList, pianjiaList) {
+  var newList = [];
+  for (let i = 0; i < 46; i += 1) {
+    var obj = {
+      spell: spellList[i],
+      pingjia: pingjiaList[i],
+      pianjia: pianjiaList[i],
+    };
+    newList.push(obj);
+  }
+  var str = JSON.stringify(newList);
+  console.log(str);
+  return str;
 }

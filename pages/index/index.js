@@ -1,54 +1,72 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const Datas = require('../../constants/data.js');
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    currentWordIndex: 0,
+    wordList: Datas.wordList,
+    model: 0,// 0为轻音，1为轻+浊音，2为全部
+    pingjiaShow: true,
+    pianjiaShow: true,
+    spellShow: true,
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    this.changeModel(0);
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  prevWord: function() {
+    const wordListLength = Datas.wordListLengthArr[this.data.model];
+    const { currentWordIndex } = this.data;
+    let result = 0;
+    if (currentWordIndex === 0) {
+      result = wordListLength - 1;
+    } else {
+      result = currentWordIndex - 1;
+    }
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+      currentWordIndex: result
+    });
+  },
+  nextWord: function () {
+    const wordListLength = Datas.wordListLengthArr[this.data.model];
+    const { currentWordIndex } = this.data;
+    let result = 0;
+    if (currentWordIndex === wordListLength - 1) {
+      result = 0;
+    } else {
+      result = currentWordIndex + 1;
+    }
+    this.setData({
+      currentWordIndex: result
+    });
+  },
+  changeModel: function(model) {
+    const end = Datas.wordListLengthArr[model];
+    this.setData({
+      model,
+      wordList: Datas.wordList.slice(0, end)
+    });
+  },
+  pingjiaChange: function(e) {
+    this.setData({ pingjiaShow: e.detail.value });
+  },
+  pianjiaChange: function(e) {
+    this.setData({ pianjiaShow: e.detail.value });
+  },
+  spellChange: function(e) {
+    this.setData({ spellShow: e.detail.value });
+  },
+  playAudio: function() {
+    const { wordList, currentWordIndex } = this.data;
+    const filePath = `../../assets/audios/${wordList[currentWordIndex].spell}.mp3`;
+    const innerAudioContext = wx.createInnerAudioContext();
+    innerAudioContext.src = filePath;
+    innerAudioContext.onPlay(() => {
+      console.log('开始播放');
+    });
+    innerAudioContext.onError((res) => {
+      console.log(res.errMsg);
+    });
   }
 })
