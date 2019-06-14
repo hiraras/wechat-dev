@@ -18,7 +18,8 @@ Page({
       { text: '随机', value: 1, id: 2 },
     ],
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    console.log(options);
     this.changeWordRangeMode(0);
   },
   prevWord: function() {
