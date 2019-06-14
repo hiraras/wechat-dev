@@ -1,16 +1,27 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="usermotto">
-    <radio-group bindchange="changePlaySequenceMode" >
-      <label wx:for="{{ playSequenceList }}" wx:for-item="item" wx:key="{{ item.id }}" wx:for-index="{{ index }}">
-        <radio value="{{ item.value }}" checked="{{ item.value === wordPlaySequenceMode }}" /> {{ item.text }}
-      </label>
-    </radio-group>
-    <text class="content">{{ 
+  <view class="content">
+    <text class="text">{{ 
         pingjiaShow ? wordList[currentWordIndex].pingjia : '' }}{{ pianjiaShow ? wordList[currentWordIndex].pianjia : '' }}{{ spellShow ? wordList[currentWordIndex].spell : ''
     }}</text>
   </view>
-  <view>
+  <view class="options">
+    <view class="radio-group-ctn">
+      <view class="radio-group-item">
+        <radio-group bindchange="changePlaySequenceMode" >
+          <label wx:for="{{ playSequenceList }}" wx:for-item="item" wx:key="{{ item.id }}">
+            <radio value="{{ item.value }}" checked="{{ item.value === wordPlaySequenceMode }}" /> {{ item.text }}
+          </label>
+        </radio-group>
+      </view>
+      <view class="radio-group-item">
+        <radio-group bindchange="changeWordRangeMode" >
+          <label wx:for="{{ wordRangeList }}" wx:for-item="item" wx:key="{{ item.id }}">
+            <radio value="{{ item.value }}" checked="{{ item.value === wordRangeMode }}" /> {{ item.text }}
+          </label>
+        </radio-group>
+      </view>
+    </view>
     <view class="switch-ctn">
       <label class="switch-label">平假：</label>
       <switch bindchange="pingjiaChange" checked />

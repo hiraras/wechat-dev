@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-const app = getApp()
+getApp()
 const Datas = require('../../constants/data.js');
 const Utils = require('../../utils/util.js');
 
@@ -17,10 +17,16 @@ Page({
       { text: '顺序', value: 0, id: 1 },
       { text: '随机', value: 1, id: 2 },
     ],
+    wordRangeList: [
+      { text: '清', value: 0, id: 1 },
+      { text: '浊', value: 1, id: 2 },
+      { text: '拗', value: 2, id: 3 },
+    ],
   },
   onLoad: function (options) {
-    console.log(options);
-    this.changeWordRangeMode(0);
+    // console.log(options);
+    const initOption = { detail: { value: 0 } };
+    this.changeWordRangeMode(initOption);
   },
   prevWord: function() {
     this.changeCurrentWordIndex(0);
@@ -52,11 +58,13 @@ Page({
       currentWordIndex: result
     });
   },
-  changeWordRangeMode: function(mode) {
+  changeWordRangeMode: function(e) {
+    const mode = +e.detail.value;
     const end = Datas.wordListLengthArr[mode];
     this.setData({
       wordRangeMode: mode,
-      wordList: Datas.wordList.slice(0, end)
+      wordList: Datas.wordList.slice(0, end),
+      currentWordIndex: 0
     });
   },
   changePlaySequenceMode: function(e) {
