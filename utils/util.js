@@ -16,13 +16,6 @@ const formatNumber = n => {
 
 // 没有传参返回0，1个参数认为0-x，两个参数取两者之间
 const getRandom = (min, max) => {
-  if (arguments.length === 1) {
-    max = arguments[0];
-    min = 0;
-  }
-  if (arguments.length === 0) {
-    return 0;
-  }
   return Math.floor(Math.random() * (max - min) + min);
 }
 

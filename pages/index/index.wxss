@@ -1,9 +1,15 @@
 /**index.wxss**/
 .usermotto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content {
   font-size: 64px;
   font-weight: bold;
   text-align: center;
   color: red;
+  margin: 8px 0;
 }
 .switch-btn-ctn {
   margin-top: 24px;

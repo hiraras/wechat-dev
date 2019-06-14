@@ -1,12 +1,15 @@
 <!--index.wxml-->
 <view class="container">
   <view class="usermotto">
-    <text class="content">
-      {{ pingjiaShow ? wordList[currentWordIndex].pingjia : '' }}{{ pianjiaShow ? wordList[currentWordIndex].pianjia : '' }}{{ spellShow ? wordList[currentWordIndex].spell : '' }}
-    </text>
-    <view>
-      <image src="../../assets/images/speaker.png" class="play-btn-image" bindtap="playAudio" />
-    </view>
+    <radio-group bindchange="changePlaySequenceMode" >
+      <label wx:for="{{ playSequenceList }}" wx:for-item="item" wx:key="{{ item.id }}" wx:for-index="{{ index }}">
+        <radio value="{{ item.value }}" checked="{{ item.value === wordPlaySequenceMode }}" /> {{ item.text }}
+      </label>
+    </radio-group>
+    <text class="content">{{ 
+        pingjiaShow ? wordList[currentWordIndex].pingjia : '' }}{{ pianjiaShow ? wordList[currentWordIndex].pianjia : '' }}{{ spellShow ? wordList[currentWordIndex].spell : ''
+    }}</text>
+    <button bindtap="playAudio" size="mini">播放</button>
   </view>
   <view>
     <view class="switch-ctn">
