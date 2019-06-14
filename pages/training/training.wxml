@@ -1,0 +1,34 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="usermotto">
+    <radio-group bindchange="changePlaySequenceMode" >
+      <label wx:for="{{ playSequenceList }}" wx:for-item="item" wx:key="{{ item.id }}" wx:for-index="{{ index }}">
+        <radio value="{{ item.value }}" checked="{{ item.value === wordPlaySequenceMode }}" /> {{ item.text }}
+      </label>
+    </radio-group>
+    <text class="content">{{ 
+        pingjiaShow ? wordList[currentWordIndex].pingjia : '' }}{{ pianjiaShow ? wordList[currentWordIndex].pianjia : '' }}{{ spellShow ? wordList[currentWordIndex].spell : ''
+    }}</text>
+  </view>
+  <view>
+    <view class="switch-ctn">
+      <label class="switch-label">平假：</label>
+      <switch bindchange="pingjiaChange" checked />
+    </view>
+    <view class="switch-ctn">
+      <label class="switch-label">片假：</label>
+      <switch bindchange="pianjiaChange" checked />
+    </view>
+    <view class="switch-ctn">
+      <label class="switch-label">罗马：</label>
+      <switch bindchange="spellChange" checked />
+    </view>
+  </view>
+  <view>
+    <slider bindchange="sliderChange" min="1" max="10" show-value/>
+  </view>
+  <view class="switch-btn-ctn">
+    <button bindtap="startTraining">开始</button>
+    <button bindtap="stopTraining">停止</button>
+  </view>
+</view>

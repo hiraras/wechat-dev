@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/homepage/homepage"
+    "pages/homepage/homepage",
+    "pages/training/training"
   ],
   "window": {
     "backgroundTextStyle": "light",

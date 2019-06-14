@@ -1,5 +1,8 @@
 <view class="navigator-ctn">
   <view class="item">
-    <navigator url="/pages/homepage/homepage?title=navigate" hover-class="navigator-hover">主页</navigator>
+    <navigator url="/pages/homepage/homepage" hover-class="navigator-hover">主页</navigator>
+  </view>
+  <view class="item">
+    <navigator url="/pages/training/training" hover-class="navigator-hover">训练</navigator>
   </view>
 </view>
