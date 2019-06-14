@@ -84,6 +84,7 @@ Page({
     this.setData({ spellShow: e.detail.value });
   },
   startTraining: function() {
+    this.stopTraining();
     const timer = setInterval(() => {
       this.changeCurrentWordIndex();
     }, this.data.speed * 1000);
