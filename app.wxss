@@ -8,6 +8,11 @@
   padding: 8px 0;
   align-items: stretch;
 } 
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 view {
   display: block;
 }

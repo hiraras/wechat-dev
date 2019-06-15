@@ -1,9 +1,4 @@
 /**index.wxss**/
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .text {
   font-size: 40px;
   font-weight: bold;

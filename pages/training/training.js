@@ -1,6 +1,5 @@
 //index.js
 //获取应用实例
-getApp()
 const Datas = require('../../constants/data.js');
 const Utils = require('../../utils/util.js');
 

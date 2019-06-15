@@ -1,6 +1,5 @@
 //index.js
 //获取应用实例
-getApp()
 const Datas = require('../../constants/data.js');
 const Utils = require('../../utils/util.js');
 
@@ -25,6 +24,8 @@ Page({
   },
   onLoad: function (options) {
     // console.log(options);
+    const appInstance = getApp();
+    console.log(appInstance);
     const initOption = { detail: { value: 0 } };
     this.changeWordRangeMode(initOption);
   },
