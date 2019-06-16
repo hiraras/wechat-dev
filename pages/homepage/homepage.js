@@ -8,9 +8,6 @@ Page({
     currentWordIndex: 0,
     wordList: Datas.wordList,
     wordRangeMode: 0, // 0为清音，1为清+浊音，2为全部
-    pingjiaShow: true,
-    pianjiaShow: true,
-    spellShow: true,
     wordPlaySequenceMode: 0, // 0为顺序，1为随机
     playSequenceList: [
       { text: '顺序', value: 0, id: 1 },
@@ -75,27 +72,4 @@ Page({
       currentWordIndex: 0
     });
   },
-  pingjiaChange: function(e) {
-    this.setData({ pingjiaShow: e.detail.value });
-  },
-  pianjiaChange: function(e) {
-    this.setData({ pianjiaShow: e.detail.value });
-  },
-  spellChange: function(e) {
-    this.setData({ spellShow: e.detail.value });
-  },
-  playAudio: function() {
-    const { wordList, currentWordIndex } = this.data;
-    // 路径不能用 ../../assets/audios... 好像是相对于根目录
-    const filePath = `/assets/audios/${wordList[currentWordIndex].spell}.mp3`;
-    const innerAudioContext = wx.createInnerAudioContext();
-    innerAudioContext.autoplay = true;
-    innerAudioContext.src = filePath; // 'http://o-oo.net.cn/50yintuceshi/a.mp3'
-    innerAudioContext.onPlay(() => {
-      console.log('开始播放');
-    });
-    innerAudioContext.onError((res) => {
-      console.log(res.errMsg);
-    });
-  }
 })

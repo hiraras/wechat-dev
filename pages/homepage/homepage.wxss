@@ -1,29 +1,14 @@
 @import '../../common/common.wxss';
 
-.text {
-  font-size: 40px;
-  font-weight: bold;
-  text-align: center;
-  color: red;
-  margin: 8px 0;
-}
 .radio-group-ctn {
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 .radio-group-item {
-  margin-top: 24px;
+  margin-top: 12px;
   text-align: center;
 }
 .switch-btn-ctn {
-  margin-top: 24px;
+  margin-top: 12px;
   display: flex;
   flex-direction: row;
-}
-.play-btn-image {
-  width: 24px;
-  height: 24px;
-}
-.switch-ctn {
-  margin-bottom: 12px;
-  padding: 0 12px;
 }

@@ -1,0 +1,23 @@
+
+<view class="container">
+  <view class="content">
+    <text class="text">{{
+      pingjiaShow ? word.pingjia : '' }}{{ pianjiaShow ? word.pianjia : '' }}{{ spellShow ? word.spell : ''
+    }}</text>
+  </view>
+  <button bindtap="playAudio" size="mini">播放</button>
+  <view class="switchs">
+    <view class="switch-ctn">
+      <label class="switch-label">平：</label>
+      <switch bindchange="pingjiaChange" checked />
+    </view>
+    <view class="switch-ctn">
+      <label class="switch-label">片：</label>
+      <switch bindchange="pianjiaChange" checked />
+    </view>
+    <view class="switch-ctn">
+      <label class="switch-label">罗：</label>
+      <switch bindchange="spellChange" checked />
+    </view>
+  </view>
+</view>

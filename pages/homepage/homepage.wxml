@@ -1,11 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="content">
-    <text class="text">{{
-        pingjiaShow ? wordList[currentWordIndex].pingjia : '' }}{{ pianjiaShow ? wordList[currentWordIndex].pianjia : '' }}{{ spellShow ? wordList[currentWordIndex].spell : ''
-    }}</text>
-    <button bindtap="playAudio" size="mini">播放</button>
-  </view>
+  <content word="{{ wordList[currentWordIndex] }}"></content>
   <view class="options">
     <view class="radio-group-ctn">
       <view class="radio-group-item">
@@ -22,18 +17,6 @@
           </label>
         </radio-group>
       </view>
-    </view>
-    <view class="switch-ctn">
-      <label class="switch-label">平假：</label>
-      <switch bindchange="pingjiaChange" checked />
-    </view>
-    <view class="switch-ctn">
-      <label class="switch-label">片假：</label>
-      <switch bindchange="pianjiaChange" checked />
-    </view>
-    <view class="switch-ctn">
-      <label class="switch-label">罗马：</label>
-      <switch bindchange="spellChange" checked />
     </view>
   </view>
   <view class="switch-btn-ctn">

@@ -1,0 +1,25 @@
+
+.container {
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content {
+  margin-bottom: 8px;
+}
+.text {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: red;
+  margin: 8px 0;
+}
+.switchs {
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+.switch-ctn {
+  margin-left: 8px;
+  display: inline-block;
+}
