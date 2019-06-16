@@ -1,0 +1,24 @@
+.container {
+  position: relative;
+  height: 8px;
+  margin-bottom: 12px;
+}
+.tabs-container {
+  display: flex;
+  flex-direction: row;
+  height: 24px;
+}
+.tabItem {
+  flex: 1;
+  text-align: center;
+  color: black;
+}
+.tabItem.active {
+  color: #2c76fb;
+}
+.bottom {
+  height: 4px;
+  background-color: #2c76fb;
+  position: absolute;
+  transition: all 0.3s;
+}

@@ -21,6 +21,11 @@ Page({
       { text: '浊', value: 1, id: 2 },
       { text: '拗', value: 2, id: 3 },
     ],
+    tabList: [
+      { tabName: '基本练习', value: 0 },
+      { tabName: '换段练习', value: 1 },
+    ],
+    activeTab: 0,
     speed: 1, // 变化的时间间隔(秒)
     timer: 0,
   },
@@ -96,5 +101,10 @@ Page({
     const speed = +e.detail.value;
     this.stopTraining();
     this.setData({ speed });
+  },
+  onTabsChange: function(e) {
+    this.setData({
+      activeTab: e.detail.value
+    });
   }
 })

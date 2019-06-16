@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="tabs-container">
+    <view 
+      wx:for="{{ tabList }}"
+      wx:for-item="tabItem"
+      wx:for-index="tabIndex"
+      wx:key="{{ tabIndex }}"
+      class="tabItem {{ activeIndex === tabItem.value ? 'active' : '' }}"
+      bindtap="onTabClick"
+      id="{{ tabItem.value }}"
+    >
+      <text class="tabText">{{ tabItem.tabName }}</text>
+    </view>
+  </view>
+  <view class="bottom" style="width: {{ tabWidth }}%;left: {{ tabPosition }}%"></view>
+</view>

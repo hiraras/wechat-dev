@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="container">
+  <tabs bind:onChange="onTabsChange" tabList="{{ tabList }}" activeIndex="{{ activeTab }}"></tabs>
   <view class="content">
     <text class="text">{{ 
         pingjiaShow ? wordList[currentWordIndex].pingjia : '' }}{{ pianjiaShow ? wordList[currentWordIndex].pianjia : '' }}{{ spellShow ? wordList[currentWordIndex].spell : ''
