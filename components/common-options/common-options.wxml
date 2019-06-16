@@ -1,0 +1,17 @@
+
+<view class="container">
+  <view class="radio-group">
+    <radio-group bindchange="changePlaySequenceMode">
+      <label wx:for="{{ playSequenceList }}" wx:for-item="item" wx:key="{{ item.id }}" wx:for-index="{{ index }}">
+        <radio value="{{ item.value }}" checked="{{ item.value === modeData.playSequence }}" /> {{ item.text }}
+      </label>
+    </radio-group>
+  </view>
+  <view class="radio-group">
+    <radio-group bindchange="changeWordRangeMode">
+      <label wx:for="{{ wordRangeList }}" wx:for-item="item" wx:key="{{ item.id }}">
+        <radio value="{{ item.value }}" checked="{{ item.value === modeData.wordRange }}" /> {{ item.text }}
+      </label>
+    </radio-group>
+  </view>
+</view>

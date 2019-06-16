@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "content": "/components/content/content"
+    "content": "/components/content/content",
+    "common-options": "/components/common-options/common-options"
   }
 }

@@ -1,24 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <content word="{{ wordList[currentWordIndex] }}"></content>
-  <view class="options">
-    <view class="radio-group-ctn">
-      <view class="radio-group-item">
-        <radio-group bindchange="changePlaySequenceMode" >
-          <label wx:for="{{ playSequenceList }}" wx:for-item="item" wx:key="{{ item.id }}" wx:for-index="{{ index }}">
-            <radio value="{{ item.value }}" checked="{{ item.value === wordPlaySequenceMode }}" /> {{ item.text }}
-          </label>
-        </radio-group>
-      </view>
-      <view class="radio-group-item">
-        <radio-group bindchange="changeWordRangeMode" >
-          <label wx:for="{{ wordRangeList }}" wx:for-item="item" wx:key="{{ item.id }}">
-            <radio value="{{ item.value }}" checked="{{ item.value === wordRangeMode }}" /> {{ item.text }}
-          </label>
-        </radio-group>
-      </view>
-    </view>
-  </view>
+  <common-options modeData="{{ modeData }}" bind:onChange="commonOptionsChange"></common-options>
   <view class="switch-btn-ctn">
     <button bindtap="prevWord">prev</button>
     <button bindtap="nextWord">next</button>
