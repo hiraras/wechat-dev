@@ -25,26 +25,40 @@ Page({
   changeCurrentWordIndex: function(direct) {
     // direct为0则是上一个，否则为下一个
     const wordListLength = Datas.wordListLengthArr[this.data.modeData.wordRange];
-    const { currentWordIndex, modeData: { playSequence } } = this.data;
+    const { modeData: { playSequence } } = this.data;
     let result = 0;
-    if (playSequence === 0) {
-      if (direct === 0 && currentWordIndex === 0) {
-        result = wordListLength - 1;
-      } else if (direct === 1 && currentWordIndex === wordListLength - 1) {
-        result = 0;
-      } else {
-        const nextStep = direct === 0 ? -1 : 1;
-        result = currentWordIndex + nextStep;
-      }
-    } else if (playSequence === 1) {
-      result = Utils.getRandom(0, wordListLength);
-      while(currentWordIndex === result) {
-        result = Utils.getRandom(0, wordListLength);
-      }
+    switch(playSequence) {
+      case 0:
+        result = this.getOrdinalIndex(direct, wordListLength);
+        break;
+      case 1:
+        result = this.getRandomIndex(wordListLength);
+        break;
+      default:
+        break;
     }
     this.setData({
       currentWordIndex: result
     });
+  },
+  getOrdinalIndex: function(direct, range) {
+    const { currentWordIndex } = this.data;
+    if (direct === 0 && currentWordIndex === 0) {
+      return range - 1;
+    } else if (direct === 1 && currentWordIndex === range - 1) {
+      return 0;
+    } else {
+      const nextStep = direct === 0 ? -1 : 1;
+      return currentWordIndex + nextStep;
+    }
+  },
+  getRandomIndex: function(range) {
+    const { currentWordIndex } = this.data;
+    let num = Utils.getRandom(0, range);
+    while(currentWordIndex === num) {
+      num = Utils.getRandom(0, range);
+    }
+    return num;
   },
   commonOptionsChange: function(e) {
     const newModeData = e.detail;
