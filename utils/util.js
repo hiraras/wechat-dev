@@ -6,7 +6,7 @@ const formatTime = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join(' ') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
 const formatNumber = n => {
@@ -22,19 +22,4 @@ const getRandom = (min, max) => {
 module.exports = {
   formatTime: formatTime,
   getRandom: getRandom
-}
-
-function createWordList(spellList, pingjiaList, pianjiaList) {
-  var newList = [];
-  for (let i = 0; i < 46; i += 1) {
-    var obj = {
-      spell: spellList[i],
-      pingjia: pingjiaList[i],
-      pianjia: pianjiaList[i],
-    };
-    newList.push(obj);
-  }
-  var str = JSON.stringify(newList);
-  console.log(str);
-  return str;
 }

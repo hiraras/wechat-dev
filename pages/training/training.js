@@ -2,6 +2,7 @@
 //获取应用实例
 const Datas = require('../../constants/data.js');
 const Utils = require('../../utils/util.js');
+const Common = require('../../common/common');
 
 Page({
   data: {
@@ -31,40 +32,11 @@ Page({
   changeCurrentWordIndex: function(direct) {
     // direct为0则是上一个，否则为下一个
     const wordListLength = Datas.wordListLengthArr[this.data.modeData.wordRange];
-    const { modeData: { playSequence } } = this.data;
-    let result = 0;
-    switch(playSequence) {
-      case 0:
-        result = this.getOrdinalIndex(direct, wordListLength);
-        break;
-      case 1:
-        result = this.getRandomIndex(wordListLength);
-        break;
-      default:
-        break;
-    }
+    const { modeData: { playSequence }, currentWordIndex } = this.data;
+    const result = Common.getNextWordIndex(currentWordIndex, playSequence, direct, wordListLength);
     this.setData({
       currentWordIndex: result
     });
-  },
-  getOrdinalIndex: function(direct, range) {
-    const { currentWordIndex } = this.data;
-    if (direct === 0 && currentWordIndex === 0) {
-      return range - 1;
-    } else if (direct === 1 && currentWordIndex === range - 1) {
-      return 0;
-    } else {
-      const nextStep = direct === 0 ? -1 : 1;
-      return currentWordIndex + nextStep;
-    }
-  },
-  getRandomIndex: function(range) {
-    const { currentWordIndex } = this.data;
-    let num = Utils.getRandom(0, range);
-    while(currentWordIndex === num) {
-      num = Utils.getRandom(0, range);
-    }
-    return num;
   },
   startTraining: function() {
     this.stopTraining();
