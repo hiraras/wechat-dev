@@ -21,12 +21,12 @@ function getRandomIndex(currentIndex, range) {
   return num;
 }
 
-function getNextWordIndex(currentIndex, playSequence, direct, length) {
+function getNextWordIndex(currentIndex, playSequence, direct, list) {
   switch(playSequence) {
     case 0:
-      return getOrdinalIndex(currentIndex, direct, length);
+      return getOrdinalIndex(currentIndex, direct, list.length);
     case 1:
-      return getRandomIndex(currentIndex, length);
+      return getRandomIndex(currentIndex, list.length);
     default:
       return 0;
   }
@@ -41,8 +41,8 @@ function getRandomColumnsList(arr) {
   return result;
 }
 
-function getNoRepeatList(playSequence, length) {
-  const newList = [...new Array(length)].map((v, index) => index);
+function getWordSequenceList(playSequence, len) {
+  const newList = [...new Array(len)].map((_, index) => index);
   switch(playSequence) {
     case 0:
       return newList;
@@ -59,5 +59,5 @@ module.exports = {
   getOrdinalIndex,
   getRandomIndex,
   getNextWordIndex,
-  getNoRepeatList
+  getWordSequenceList
 }

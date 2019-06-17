@@ -2,7 +2,7 @@
 <view class="container">
   <tabs bind:onChange="onTabsChange" tabList="{{ tabList }}" activeIndex="{{ activeTab }}"></tabs>
   <content word="{{ wordList[currentWordIndex] }}"></content>
-  <common-options modeData="{{ modeData }}" bind:onChange="commonOptionsChange" bind:restart="reset" isEnd="{{ isEnd }}"></common-options>
+  <common-options modeData="{{ modeData }}" bind:onChange="commonOptionsChange" bind:restart="restart" isEnd="{{ isEnd }}"></common-options>
   <view>
     <slider bindchange="sliderChange" min="1" max="10" show-value/>
   </view>

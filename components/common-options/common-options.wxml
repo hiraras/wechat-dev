@@ -18,7 +18,7 @@
     <label>重复:</label>
     <switch bindchange="changeRepeatMode" checked="{{ modeData.isRepeat }}" />
   </view>
-  <view class="end-ctn" wx:if="{{ modeData.playSequence === 1 && isEnd }}">
+  <view class="end-ctn" wx:if="{{ !modeData.isRepeat && isEnd }}">
     <text class="end-tip">结束!</text>
     <button size="mini" bindtap="restart">restart</button>
   </view>

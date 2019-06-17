@@ -21,10 +21,10 @@ Page({
     speed: 1, // 变化的时间间隔(秒)
     timer: 0,
     isEnd: false, // 不重复模式下是否结束
-    noRepeatList: [],
+    wordSequenceList: [], // 字符列表的顺序
   },
   onLoad: function () {
-    this.setNewWordList(0);
+    this.init();
   },
   onUnload: function () {
     this.stopTraining();
@@ -33,28 +33,28 @@ Page({
     this.changeCurrentWordIndex(1);
   },
   changeCurrentWordIndex: function(direct) {
-    // direct为0则是上一个，否则为下一个
-    const wordListLength = this.data.wordList.length;
-    const { modeData: { playSequence, isRepeat }, currentWordIndex, noRepeatList } = this.data;
+    // direct为0则是上一个，否则为下一个，不重复模式下上一个与下一个效果相同
+    const { modeData: { playSequence, isRepeat }, currentWordIndex, wordSequenceList } = this.data;
     let result = 0;
+    let newWordSequenceList = [];
     if (isRepeat) {
-      result = Common.getNextWordIndex(currentWordIndex, playSequence, direct, wordListLength);
-    } else if (!noRepeatList.length) {
-      this.stopTraining();
-      this.setData({
-        isEnd: true
-      });
-      return ;
+      newWordSequenceList = wordSequenceList;
+      result = Common.getNextWordIndex(currentWordIndex, playSequence, direct, newWordSequenceList);
     } else {
-      result = noRepeatList[0];
+      newWordSequenceList = wordSequenceList.slice(1);
+      result = newWordSequenceList.length && newWordSequenceList[0];
     }
-    this.setData({
-      currentWordIndex: result,
-      noRepeatList: noRepeatList.slice(1)
-    });
+    if (newWordSequenceList.length) {
+      this.setData({
+        currentWordIndex: result,
+        wordSequenceList: newWordSequenceList
+      });
+    } else {
+      this.stopTraining();
+      this.setData({ isEnd: true });
+    }
   },
   startTraining: function() {
-    this.stopTraining();
     const timer = setInterval(() => {
       this.nextWord();
     }, this.data.speed * 1000);
@@ -70,56 +70,54 @@ Page({
   },
   onTabsChange: function(e) {
     const value = e.detail.value;
-    let newPlaySequence, isRepeat;
+    const newModeData = {};
     if (value === 0) {
-      newPlaySequence = 0;
-      isRepeat = true;
+      newModeData.playSequence = 0;
+      newModeData.isRepeat = true;
     } else if (value === 1) {
-      newPlaySequence = 2;
-      isRepeat = false;
+      newModeData.playSequence = 2;
+      newModeData.isRepeat = false;
     }
     this.setData({
       activeTab: value,
-      modeData: Object.assign(this.data.modeData, { 
-        playSequence: newPlaySequence,
-        isRepeat: isRepeat
-      })
+      modeData: Object.assign(this.data.modeData, newModeData)
     });
-    this.reset();
+    this.init();
   },
   commonOptionsChange: function(e) {
     const newModeData = e.detail;
-    const { isRepeat, wordRange } = newModeData;
     this.setData({
       modeData: newModeData,
-      currentWordIndex: 0, // 只要有模式改变就重置
     });
-    this.stopTraining();
-    this.setNewWordList(wordRange);
-    if (!isRepeat) {
-      this.setNewNoRepeatList(wordRange);
-    }
+    this.init();
   },
-  setNewWordList: function(mode) {
-    const end = Datas.wordListLengthArr[mode];
+  setNewWordList: function(len) {
     this.setData({
-      wordList: Datas.wordList.slice(0, end),
+      wordList: Datas.wordList.slice(0, len),
     });
   },
-  setNewNoRepeatList: function(mode) {
-    const { modeData: { playSequence } } = this.data;
-    const length = Datas.wordListLengthArr[mode];
+  setNewWordSequenceList: function(playSequence, len) {
     this.setData({
-      noRepeatList: Common.getNoRepeatList(playSequence, length)
+      wordSequenceList: Common.getWordSequenceList(playSequence, len)
     });
+  },
+  restart: function() {
+    this.init();
+  },
+  init: function() {
+    const { wordRange, playSequence } = this.data.modeData;
+    const len = Datas.wordListLengthArr[wordRange];
+    this.reset();
+    this.setNewWordList(len);
+    this.setNewWordSequenceList(playSequence, len);
   },
   reset: function() {
     this.stopTraining();
-    const { modeData: { wordRange } } = this.data;
     this.setData({
       currentWordIndex: 0,
-      isEnd: false, // 不重复模式下是否结束
+      wordList: Datas.wordList,
+      isEnd: false,
+      wordSequenceList: [],
     });
-    this.setNewNoRepeatList(wordRange);
   }
 })

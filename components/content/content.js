@@ -35,6 +35,9 @@ Component({
       innerAudioContext.onError((res) => {
         console.log(res.errMsg);
       });
+      innerAudioContext.onStop(() => {
+        console.log('播放结束');
+      });
     }
   }
 })
