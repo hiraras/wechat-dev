@@ -2,11 +2,11 @@
 <view class="container">
   <tabs bind:onChange="onTabsChange" tabList="{{ tabList }}" activeIndex="{{ activeTab }}"></tabs>
   <content word="{{ wordList[currentWordIndex] }}"></content>
-  <common-options modeData="{{ modeData }}" bind:onChange="commonOptionsChange"></common-options>
+  <common-options modeData="{{ modeData }}" bind:onChange="commonOptionsChange" bind:restart="reset" isEnd="{{ isEnd }}"></common-options>
   <view>
     <slider bindchange="sliderChange" min="1" max="10" show-value/>
   </view>
-  <view class="switch-btn-ctn">
+  <view class="switch-btn-ctn" wx:if="{{ !isEnd }}">
     <button bindtap="startTraining">开始</button>
     <button bindtap="stopTraining">停止</button>
   </view>

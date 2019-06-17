@@ -193,11 +193,13 @@ const spellList = [
 ];
 
 const wordListLengthArr = [46, 71, 104];
+const columnLengthArr = [5, 5, 5, 5, 5, 5, 5, 3, 5, 3, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3];
 
 module.exports = {
   wordList: wordList,
   spellList: spellList,
   pianjiaList: pianjiaList,
   pingjiaList: pingjiaList,
-  wordListLengthArr: wordListLengthArr
+  wordListLengthArr: wordListLengthArr,
+  columnLengthArr: columnLengthArr
 };

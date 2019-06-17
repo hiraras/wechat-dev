@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <content word="{{ wordList[currentWordIndex] }}"></content>
-  <common-options modeData="{{ modeData }}" bind:onChange="commonOptionsChange"></common-options>
+  <common-options modeData="{{ modeData }}" bind:onChange="commonOptionsChange" bind:restart="reset" isEnd="{{ isEnd }}"></common-options>
   <view class="switch-btn-ctn">
     <button bindtap="prevWord">prev</button>
     <button bindtap="nextWord">next</button>

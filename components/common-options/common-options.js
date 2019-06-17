@@ -5,8 +5,13 @@ Component({
       type: Object,
       value: {
         playSequence: 0,
-        wordRange: 0
+        wordRange: 0,
+        isRepeat: true
       }
+    },
+    isEnd: {
+      type: Boolean,
+      value: false
     }
   },
   data: {
@@ -34,6 +39,16 @@ Component({
         wordRange: mode
       });
       this.triggerEvent('onChange', newState);
+    },
+    changeRepeatMode: function(e) {
+      const mode = +e.detail.value;
+      const newState = Object.assign({}, this.properties.modeData, {
+        isRepeat: Boolean(mode)
+      });
+      this.triggerEvent('onChange', newState);
+    },
+    restart: function() {
+      this.triggerEvent('restart');
     }
   }
 })

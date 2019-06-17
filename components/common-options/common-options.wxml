@@ -1,7 +1,7 @@
 
 <view class="container">
   <view class="radio-group">
-    <radio-group bindchange="changePlaySequenceMode">
+    <radio-group bindchange="changePlaySequenceMode" wx:if="{{ modeData.playSequence !== 2 }}">
       <label wx:for="{{ playSequenceList }}" wx:for-item="item" wx:key="{{ item.id }}" wx:for-index="{{ index }}">
         <radio value="{{ item.value }}" checked="{{ item.value === modeData.playSequence }}" /> {{ item.text }}
       </label>
@@ -13,5 +13,13 @@
         <radio value="{{ item.value }}" checked="{{ item.value === modeData.wordRange }}" /> {{ item.text }}
       </label>
     </radio-group>
+  </view>
+  <view class="repeat-option-ctn" wx:if="{{ modeData.playSequence === 1 }}">
+    <label>重复:</label>
+    <switch bindchange="changeRepeatMode" checked="{{ modeData.isRepeat }}" />
+  </view>
+  <view class="end-ctn" wx:if="{{ modeData.playSequence === 1 && isEnd }}">
+    <text class="end-tip">结束!</text>
+    <button size="mini" bindtap="restart">restart</button>
   </view>
 </view>

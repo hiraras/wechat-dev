@@ -32,8 +32,32 @@ function getNextWordIndex(currentIndex, playSequence, direct, length) {
   }
 }
 
+function getRandomColumnsList(arr) {
+  let result = [];
+  Datas.columnLengthArr.reduce(function(total, num) {
+    result = [...result, ...Utils.shuffle(arr.slice(total, total + num))];
+    return total + num;
+  }, 0);
+  return result;
+}
+
+function getNoRepeatList(playSequence, length) {
+  const newList = [...new Array(length)].map((v, index) => index);
+  switch(playSequence) {
+    case 0:
+      return newList;
+    case 1:
+      return Utils.shuffle(newList);
+    case 2:
+      return getRandomColumnsList(newList);
+    default:
+      return newList;
+  }
+}
+
 module.exports = {
   getOrdinalIndex,
   getRandomIndex,
-  getNextWordIndex
+  getNextWordIndex,
+  getNoRepeatList
 }

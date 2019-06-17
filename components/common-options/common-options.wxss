@@ -8,3 +8,16 @@
 .radio-group {
   margin-bottom: 12px;
 }
+.repeat-option-ctn label {
+  margin-right: 8px;
+}
+.end-ctn {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.end-tip {
+  color: red;
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+}

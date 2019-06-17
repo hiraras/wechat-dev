@@ -19,7 +19,21 @@ const getRandom = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+const shuffle = (arr) => {
+  if (!Array.isArray(arr) || !arr.length) {
+    return [];
+  }
+  let i = arr.length;
+  while(i) {
+    const j = Math.floor(Math.random() * i);
+    i -= 1;
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 module.exports = {
   formatTime: formatTime,
-  getRandom: getRandom
+  getRandom: getRandom,
+  shuffle: shuffle
 }
