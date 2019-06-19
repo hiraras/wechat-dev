@@ -1,0 +1,19 @@
+
+<view class="container">
+  <view class="select-ctn">
+    <button size="mini" bindtap="show">选择颜色</button>
+    <view class="current-color" style="background: {{ color }}"></view>
+  </view>
+  <view class="colors-ctn" wx:if="{{ show }}">
+    <view 
+      class="color"
+      wx:for="{{ colorList }}"
+      wx:for-item="item"
+      wx:for-index="index"
+      wx:key="{{ index }}"
+      style="background: {{ item }}"
+      bindtap="onSelect"
+      data-color="{{ item }}"
+    />
+  </view>
+</view>

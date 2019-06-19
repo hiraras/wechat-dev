@@ -1,0 +1,33 @@
+
+.container {
+  position: relative;
+  display: inline-block;
+}
+.colors-ctn {
+  position: absolute;
+  width: 150px;
+  height: 120px;
+  overflow: auto;
+  border: 1px solid black;
+  border-radius: 4px;
+  background: rgba(0.5, 0.5, 0.5, 0.5);
+}
+.color {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+}
+.select-ctn {
+  border: 1px solid black;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+.current-color {
+  display: inline-block;
+  margin-left: 8px;
+  height: 12px;
+  width: 12px;
+  border-radius: 4px;
+}
