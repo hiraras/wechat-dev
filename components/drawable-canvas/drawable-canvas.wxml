@@ -1,0 +1,15 @@
+
+<view class="container" style="width: {{ style.width }}; height: {{ style.height }}">
+  <canvas 
+    canvas-id="myCanvas"
+    class="canvas"
+    bindtouchstart="touchStart"
+    bindtouchmove="touchMove"
+    bindtouchend="touchEnd"
+  />
+  <view class="options">
+    <button size="mini" bindtap="clearCanvas" class="option-btn clear-btn">清除</button>
+    <color-picker bind:onChange="onColorChange" />
+    <button size="mini" bindtap="modeChange" class="option-btn">{{ modeList[mode] }}</button>
+  </view>
+</view>
