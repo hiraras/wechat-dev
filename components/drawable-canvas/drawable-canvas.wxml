@@ -21,7 +21,6 @@
     <view wx:if="{{ autoClear }}">
       <label>间隔：</label>
       <slider bindchange="sliderChange" min="1" max="10" show-value/>
-      <button bindtap="startAutoClear">开始</button>
     </view>
   </view>
 </view>

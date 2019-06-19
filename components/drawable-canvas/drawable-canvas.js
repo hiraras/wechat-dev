@@ -28,7 +28,7 @@ Component({
       this.setData({ ctx });
     },
     detached: function() {
-      clearInterval(this.data.timer);
+      clearTimeout(this.data.timer);
     }
   },
   attached: function() {
@@ -36,7 +36,7 @@ Component({
     this.setData({ ctx });
   },
   detached: function() {
-    clearInterval(this.data.timer);
+    clearTimeout(this.data.timer);
   },
   methods: {
     touchStart: function(e) {
@@ -63,16 +63,21 @@ Component({
       }
     },
     touchEnd: function() {
-      const { ctx, mode } = this.data;
+      const { ctx, mode, speed, autoClear } = this.data;
       if (mode === 0) {
-        ctx.moveTo(0, 0);
         ctx.closePath();
+        if (autoClear) {
+          const timer = setTimeout(() => {
+            this.clearCanvas();
+          }, speed * 1000);
+          this.setData({ timer });
+        }
       }
     },
     clearCanvas: function() {
-      const { ctx, mode } = this.data;
+      const { ctx } = this.data;
       ctx.clearRect(0, 0, 10000, 10000);
-      ctx.draw();
+      ctx.draw(true);
     },
     onColorChange: function(data) {
       const { detail: { color } } = data;
@@ -89,19 +94,13 @@ Component({
     },
     switchChange: function(e) {
       const { value } = e.detail;
-      clearInterval(this.data.timer);
+      clearTimeout(this.data.timer);
       this.setData({ autoClear: value });
     },
     sliderChange: function(e) {
       const speed = +e.detail.value;
-      clearInterval(this.data.timer);
+      clearTimeout(this.data.timer);
       this.setData({ speed });
-    },
-    startAutoClear: function() {
-      const timer = setInterval(() => {
-        this.clearCanvas();
-      }, this.data.speed * 1000);
-      this.setData({ timer });
     },
     createImage: function() {
       wx.canvasToTempFilePath({
