@@ -5,14 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    navigatorList: [
+      { pageName: 'homepage', title: '主页', id: 1 },
+      { pageName: 'training', title: '训练', id: 2 },
+      { pageName: 'draw', title: '画', id: 3 },
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(wx.env.USER_DATA_PATH); // 获取本地用户文件目录地址
   },
 
   /**

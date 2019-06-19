@@ -1,8 +1,5 @@
-<view class="navigator-ctn">
-  <view class="item">
-    <navigator url="/pages/homepage/homepage" hover-class="navigator-hover">主页</navigator>
-  </view>
-  <view class="item">
-    <navigator url="/pages/training/training" hover-class="navigator-hover">训练</navigator>
+<view class="container">
+  <view wx:for="{{ navigatorList }}" wx:for-item="navigatorItem" wx:key="{{ navigatorItem.id }}" class="item">
+    <navigator url="/pages/{{ navigatorItem.pageName }}/{{ navigatorItem.pageName }}" hover-class="navigator-hover">{{ navigatorItem.title }}</navigator>
   </view>
 </view>
