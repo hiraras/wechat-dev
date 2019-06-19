@@ -17,6 +17,7 @@
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  align-content: space-around;
 }
 .option-btn {
   margin: 0;

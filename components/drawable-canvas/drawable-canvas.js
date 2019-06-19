@@ -1,4 +1,6 @@
 // components/drawable-canvas/drawable-canvas.js
+const Common = require('../../common/common');
+
 Component({
   properties: {
     style: {
@@ -76,28 +78,29 @@ Component({
       });
     },
     createImage: function() {
-      const { ctx } = this.data;
       wx.canvasToTempFilePath({
         x: 0,
         y: 0,
         width: 500,
         height: 500,
         canvasId: 'myCanvas',
-        success(res) {
+        success: function(res) {
           wx.saveImageToPhotosAlbum({
             filePath: res.tempFilePath,
             success() {
-              console.log('success');
+              wx.showModal({
+                title: 'success'
+              });
             },
-            fail(e) {
-              console.log(e);
+            fail: function(e) {
+              Common.showErrorMsg(e);
             }
           });
         },
-        fail(e) {
-          console.log(e);
+        fail: function(e) {
+          Common.showErrorMsg(e);
         }
-      }, this)
+      })
     }
   }
 })

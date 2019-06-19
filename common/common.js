@@ -79,10 +79,17 @@ function createColorList(step = 32) {
   console.log(JSON.stringify(result));
 }
 
+function showErrorMsg(e) {
+  wx.showModal({
+    title: e.errMsg
+  });
+}
+
 module.exports = {
   getOrdinalIndex,
   getRandomIndex,
   getNextWordIndex,
   getWordSequenceList,
-  createColorList
+  createColorList,
+  showErrorMsg
 }
