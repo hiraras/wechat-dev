@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "drawable-canvas": "/components/drawable-canvas/drawable-canvas"
+  }
+}

@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/homepage/homepage",
-    "pages/training/training"
+    "pages/training/training",
+    "pages/draw/draw"
   ],
   "window": {
     "backgroundTextStyle": "light",
