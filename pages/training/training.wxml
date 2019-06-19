@@ -3,7 +3,8 @@
   <tabs bind:onChange="onTabsChange" tabList="{{ tabList }}" activeIndex="{{ activeTab }}"></tabs>
   <content word="{{ wordList[currentWordIndex] }}"></content>
   <common-options modeData="{{ modeData }}" bind:onChange="commonOptionsChange" bind:restart="restart" isEnd="{{ isEnd }}"></common-options>
-  <view>
+  <view class="slider-ctn">
+    <label>速度：</label>
     <slider bindchange="sliderChange" min="1" max="10" show-value/>
   </view>
   <view class="switch-btn-ctn" wx:if="{{ !isEnd }}">

@@ -1,0 +1,7 @@
+
+.container {
+  padding: 12px;
+}
+.colors {
+  color: #2c76fb; /* 蓝色 */
+}

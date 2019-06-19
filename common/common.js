@@ -54,10 +54,35 @@ function getWordSequenceList(playSequence, len) {
       return newList;
   }
 }
+// 只是用来创建，使用的是创建后放到constants/data下面的colorList
+function createColorList(step = 32) {
+  // step 需为能被256整除的数
+  const list = [];
+  const result = [];
+  let current = 0, num = 0;
+  while(current < 256) {
+    list.push(current);
+    num ++;
+    current = step * num - 1;
+  }
+  function padding(str) {
+    return str.length === 1 ? '0' + str : str;
+  }
+  for(let i=0;i<list.length;i++){
+    for(let j=0;j<list.length;j++){
+      for(let k=0;k<list.length;k++){
+        let str = '#' + padding(list[i].toString(16)) + padding(list[j].toString(16)) + padding(list[k].toString(16));
+        result.push(str);
+      }
+    }
+  }
+  console.log(JSON.stringify(result));
+}
 
 module.exports = {
   getOrdinalIndex,
   getRandomIndex,
   getNextWordIndex,
-  getWordSequenceList
+  getWordSequenceList,
+  createColorList
 }
