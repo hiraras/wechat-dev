@@ -3,7 +3,7 @@ Component({
   properties: {
     style: {
       type: Object,
-      value: { width: '100%', height: '300px' }
+      value: { width: '100%', height: '400px' }
     },
     lineWidth: {
       type: Number,
@@ -75,5 +75,29 @@ Component({
         mode: newMode,
       });
     },
+    createImage: function() {
+      const { ctx } = this.data;
+      wx.canvasToTempFilePath({
+        x: 0,
+        y: 0,
+        width: 500,
+        height: 500,
+        canvasId: 'myCanvas',
+        success(res) {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success() {
+              console.log('success');
+            },
+            fail(e) {
+              console.log(e);
+            }
+          });
+        },
+        fail(e) {
+          console.log(e);
+        }
+      }, this)
+    }
   }
 })

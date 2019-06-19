@@ -11,5 +11,6 @@
     <button size="mini" bindtap="clearCanvas" class="option-btn clear-btn">清除</button>
     <color-picker bind:onChange="onColorChange" />
     <button size="mini" bindtap="modeChange" class="option-btn">{{ modeList[mode] }}</button>
+    <button size="mini" bindtap="createImage" class="option-btn">生成图片</button>
   </view>
 </view>

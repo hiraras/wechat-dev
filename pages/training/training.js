@@ -14,8 +14,8 @@ Page({
       isRepeat: true,
     },
     tabList: [
-      { tabName: '基本练习', value: 0 },
-      { tabName: '换段练习', value: 1 },
+      { tabName: '基本', value: 0 },
+      { tabName: '换段', value: 1 },
     ],
     activeTab: 0,
     speed: 1, // 变化的时间间隔(秒)
