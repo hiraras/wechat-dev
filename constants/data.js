@@ -194,6 +194,22 @@ const spellList = [
 
 const wordListLengthArr = [46, 71, 104];
 const columnLengthArr = [5, 5, 5, 5, 5, 5, 5, 3, 5, 3, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3];
+const colorList = [
+  "#000000","#00003f","#00007f","#0000bf","#0000ff","#003f00","#003f3f","#003f7f","#003fbf",
+  "#003fff","#007f00","#007f3f","#007f7f","#007fbf","#007fff","#00bf00","#00bf3f","#00bf7f",
+  "#00bfbf","#00bfff","#00ff00","#00ff3f","#00ff7f","#00ffbf","#00ffff","#3f0000","#3f003f",
+  "#3f007f","#3f00bf","#3f00ff","#3f3f00","#3f3f3f","#3f3f7f","#3f3fbf","#3f3fff","#3f7f00",
+  "#3f7f3f","#3f7f7f","#3f7fbf","#3f7fff","#3fbf00","#3fbf3f","#3fbf7f","#3fbfbf","#3fbfff",
+  "#3fff00","#3fff3f","#3fff7f","#3fffbf","#3fffff","#7f0000","#7f003f","#7f007f","#7f00bf",
+  "#7f00ff","#7f3f00","#7f3f3f","#7f3f7f","#7f3fbf","#7f3fff","#7f7f00","#7f7f3f","#7f7f7f",
+  "#7f7fbf","#7f7fff","#7fbf00","#7fbf3f","#7fbf7f","#7fbfbf","#7fbfff","#7fff00","#7fff3f",
+  "#7fff7f","#7fffbf","#7fffff","#bf0000","#bf003f","#bf007f","#bf00bf","#bf00ff","#bf3f00",
+  "#bf3f3f","#bf3f7f","#bf3fbf","#bf3fff","#bf7f00","#bf7f3f","#bf7f7f","#bf7fbf","#bf7fff",
+  "#bfbf00","#bfbf3f","#bfbf7f","#bfbfbf","#bfbfff","#bfff00","#bfff3f","#bfff7f","#bfffbf",
+  "#bfffff","#ff0000","#ff003f","#ff007f","#ff00bf","#ff00ff","#ff3f00","#ff3f3f","#ff3f7f",
+  "#ff3fbf","#ff3fff","#ff7f00","#ff7f3f","#ff7f7f","#ff7fbf","#ff7fff","#ffbf00","#ffbf3f",
+  "#ffbf7f","#ffbfbf","#ffbfff","#ffff00","#ffff3f","#ffff7f","#ffffbf","#ffffff"
+];
 
 module.exports = {
   wordList: wordList,
@@ -201,5 +217,6 @@ module.exports = {
   pianjiaList: pianjiaList,
   pingjiaList: pingjiaList,
   wordListLengthArr: wordListLengthArr,
-  columnLengthArr: columnLengthArr
+  columnLengthArr: columnLengthArr,
+  colorList: colorList
 };
