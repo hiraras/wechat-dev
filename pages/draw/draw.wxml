@@ -1,5 +1,4 @@
 
 <view class="container">
   <drawable-canvas />
-  <color-picker />
 </view>

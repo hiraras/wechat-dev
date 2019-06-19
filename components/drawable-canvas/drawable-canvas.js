@@ -5,7 +5,7 @@ Component({
   properties: {
     style: {
       type: Object,
-      value: { width: '100%', height: '400px' }
+      value: { width: '100%', minHeight: '400px' }
     },
     lineWidth: {
       type: Number,
@@ -18,16 +18,25 @@ Component({
     modeList: ['画笔', '橡皮擦'],
     mode: 0,
     eraserSize: 10, // 橡皮擦大小,半径
+    autoClear: false,
+    speed: 1,
+    timer: 0,
   },
   lifetimes: {
     attached: function() {
       const ctx = wx.createCanvasContext('myCanvas', this);
       this.setData({ ctx });
+    },
+    detached: function() {
+      clearInterval(this.data.timer);
     }
   },
   attached: function() {
     const ctx = wx.createCanvasContext('myCanvas', this);
     this.setData({ ctx });
+  },
+  detached: function() {
+    clearInterval(this.data.timer);
   },
   methods: {
     touchStart: function(e) {
@@ -56,6 +65,7 @@ Component({
     touchEnd: function() {
       const { ctx, mode } = this.data;
       if (mode === 0) {
+        ctx.moveTo(0, 0);
         ctx.closePath();
       }
     },
@@ -76,6 +86,22 @@ Component({
       this.setData({
         mode: newMode,
       });
+    },
+    switchChange: function(e) {
+      const { value } = e.detail;
+      clearInterval(this.data.timer);
+      this.setData({ autoClear: value });
+    },
+    sliderChange: function(e) {
+      const speed = +e.detail.value;
+      clearInterval(this.data.timer);
+      this.setData({ speed });
+    },
+    startAutoClear: function() {
+      const timer = setInterval(() => {
+        this.clearCanvas();
+      }, this.data.speed * 1000);
+      this.setData({ timer });
     },
     createImage: function() {
       wx.canvasToTempFilePath({
@@ -100,7 +126,7 @@ Component({
         fail: function(e) {
           Common.showErrorMsg(e);
         }
-      })
+      }, this);
     }
   }
 })

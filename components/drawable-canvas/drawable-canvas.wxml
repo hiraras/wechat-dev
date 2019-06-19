@@ -1,5 +1,5 @@
 
-<view class="container" style="width: {{ style.width }}; height: {{ style.height }}">
+<view class="container" style="width: {{ style.width }}; min-height: {{ style.minHeight }}">
   <canvas 
     canvas-id="myCanvas"
     class="canvas"
@@ -7,10 +7,21 @@
     bindtouchmove="touchMove"
     bindtouchend="touchEnd"
   />
-  <view class="options">
+  <view class="btns">
     <button size="mini" bindtap="clearCanvas" class="option-btn clear-btn">清除</button>
     <color-picker bind:onChange="onColorChange" />
     <button size="mini" bindtap="modeChange" class="option-btn">{{ modeList[mode] }}</button>
     <button size="mini" bindtap="createImage" class="option-btn">生成图片</button>
+  </view>
+  <view class="extra-option">
+    <view>
+      <label>自动清除：</label>
+      <switch bindchange="switchChange" checked="{{ autoClear }}" />
+    </view>
+    <view wx:if="{{ autoClear }}">
+      <label>间隔：</label>
+      <slider bindchange="sliderChange" min="1" max="10" show-value/>
+      <button bindtap="startAutoClear">开始</button>
+    </view>
   </view>
 </view>
