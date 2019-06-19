@@ -6,11 +6,15 @@ Page({
    */
   data: {
     navigatorList: [
-      { pageName: 'homepage', title: '主页', id: 1 },
-      { pageName: 'training', title: '训练', id: 2 },
-      { pageName: 'draw', title: '画', id: 3 },
-      { pageName: 'map', title: '地图', id: 4 },
-    ]
+      { pageName: 'homepage', title: '主页', allowShow: true, id: 1 },
+      { pageName: 'training', title: '训练', allowShow: true, id: 2 },
+      { pageName: 'draw', title: '画', allowShow: true, id: 3 },
+      { pageName: 'map', title: '地图', allowShow: false, id: 4 },
+    ],
+    showTotal: false
+  },
+  showAll: function() {
+    this.setData({ showTotal: !this.data.showTotal });
   },
 
   /**

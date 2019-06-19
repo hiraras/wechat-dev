@@ -1,5 +1,6 @@
 <view class="container">
-  <view wx:for="{{ navigatorList }}" wx:for-item="navigatorItem" wx:key="{{ navigatorItem.id }}" class="item">
+  <view wx:for="{{ navigatorList }}" wx:for-item="navigatorItem" wx:key="{{ navigatorItem.id }}" class="item" wx:if="{{ showTotal || navigatorItem.allowShow }}">
     <navigator url="/pages/{{ navigatorItem.pageName }}/{{ navigatorItem.pageName }}" hover-class="navigator-hover">{{ navigatorItem.title }}</navigator>
   </view>
+  <view class="show-all" bindtap="showAll"></view>
 </view>

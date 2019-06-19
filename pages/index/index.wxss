@@ -12,3 +12,10 @@
   flex: 1;
   padding: 4px 6px;
 }
+.show-all {
+  width: 120rpx;
+  height: 60rpx;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+}
