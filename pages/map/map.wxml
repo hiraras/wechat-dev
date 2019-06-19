@@ -1,0 +1,12 @@
+
+<view class="container">
+  <map 
+    class="map" 
+    longitude="{{ location.longitude }}" 
+    latitude="{{ location.latitude }}"
+    markets="{{ markets }}"
+    show-compass
+    enable-rotate
+    show-location
+  />
+</view>

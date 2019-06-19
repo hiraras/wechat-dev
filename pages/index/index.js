@@ -9,6 +9,7 @@ Page({
       { pageName: 'homepage', title: '主页', id: 1 },
       { pageName: 'training', title: '训练', id: 2 },
       { pageName: 'draw', title: '画', id: 3 },
+      { pageName: 'map', title: '地图', id: 4 },
     ]
   },
 
