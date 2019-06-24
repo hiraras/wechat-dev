@@ -1,0 +1,7 @@
+<view class="container">
+  <view>
+    <button bindtap="requestTest">click</button>
+    <button bindtap="clear">clear</button>
+    <text>{{ data }}</text>
+  </view>
+</view>

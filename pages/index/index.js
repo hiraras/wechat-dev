@@ -10,21 +10,12 @@ Page({
       { pageName: 'training', title: '训练', allowShow: true, id: 2 },
       { pageName: 'draw', title: '画', allowShow: true, id: 3 },
       { pageName: 'map', title: '地图', allowShow: false, id: 4 },
+      { pageName: 'request', title: '请求', allowShow: false, id: 5 },
     ],
     showTotal: false,
-    allowShow: false,
   },
   showAll: function() {
     this.setData({ showTotal: !this.data.showTotal });
-  },
-  request: function() {
-    wx.request({
-      url: 'https://i.baidu.com/Top/getTopList',
-      method: 'get',
-      success: function(res) {
-        console.log(res);
-      }
-    });
   },
 
   /**

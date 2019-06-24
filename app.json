@@ -4,7 +4,8 @@
     "pages/homepage/homepage",
     "pages/training/training",
     "pages/draw/draw",
-    "pages/map/map"
+    "pages/map/map",
+    "pages/request/request"
   ],
   "window": {
     "backgroundTextStyle": "light",
