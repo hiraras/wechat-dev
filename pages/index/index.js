@@ -11,10 +11,20 @@ Page({
       { pageName: 'draw', title: '画', allowShow: true, id: 3 },
       { pageName: 'map', title: '地图', allowShow: false, id: 4 },
     ],
-    showTotal: false
+    showTotal: false,
+    allowShow: false,
   },
   showAll: function() {
     this.setData({ showTotal: !this.data.showTotal });
+  },
+  request: function() {
+    wx.request({
+      url: 'https://i.baidu.com/Top/getTopList',
+      method: 'get',
+      success: function(res) {
+        console.log(res);
+      }
+    });
   },
 
   /**

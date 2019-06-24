@@ -3,4 +3,5 @@
     <navigator url="/pages/{{ navigatorItem.pageName }}/{{ navigatorItem.pageName }}" hover-class="navigator-hover">{{ navigatorItem.title }}</navigator>
   </view>
   <view class="show-all" bindtap="showAll"></view>
+  <button bindtap="request" wx:if="{{ allowShow }}">click</button>
 </view>

@@ -47,6 +47,7 @@ Component({
         ctx.setStrokeStyle(this.data.lineColor);
         ctx.setLineWidth(this.properties.lineWidth);
         ctx.moveTo(x, y);
+        clearTimeout(this.data.timer);
       }
     },
     touchMove: function(e) {
