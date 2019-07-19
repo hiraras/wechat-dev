@@ -5,7 +5,9 @@
     "pages/training/training",
     "pages/draw/draw",
     "pages/map/map",
-    "pages/request/request"
+    "pages/request/request",
+    "pages/summary/summary",
+    "pages/summary-detail/summary-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

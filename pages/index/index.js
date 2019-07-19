@@ -11,6 +11,7 @@ Page({
       { pageName: 'draw', title: '画', allowShow: true, id: 3 },
       { pageName: 'map', title: '地图', allowShow: false, id: 4 },
       { pageName: 'request', title: '请求', allowShow: false, id: 5 },
+      { pageName: 'summary', title: '变化总结', allowShow: true, id: 6 },
     ],
     showTotal: false,
   },

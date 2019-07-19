@@ -1,0 +1,11 @@
+<view class="container">
+  <view 
+    class="list-item"
+    wx:for="{{ list }}"
+    wx:for-item="item"
+    wx:key="{{ item.id }}"
+    id="{{ item.id }}"
+  >
+    <navigator url="/pages/summary-detail/summary-detail?id={{ item.id }}" hover-class="navigator-hover">{{ item.name }}</navigator>
+  </view>
+</view>

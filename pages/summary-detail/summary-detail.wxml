@@ -1,0 +1,24 @@
+
+<view class="container">
+  <view class="page1" wx:if="{{ mode === 0 }}">
+    <view class="no-data-tip">{{ list.length === 0 ? '暂无数据' : '' }}</view>
+    <view 
+      class="list-item"
+      wx:for="{{ mode === 0 ? list : list[pageId].categoryList }}"
+      wx:for-item="item"
+      wx:key="{{ item.id }}"
+      id="{{ item.id }}"
+    >
+      <navigator url="/pages/summary-detail/summary-detail?id={{ pageId }}&detail={{ item.id }}" hover-class="navigator-hover">{{ item.name }}</navigator>
+    </view>
+  </view>
+  <view 
+    wx:if="{{ mode === 1 }}"
+    wx:for="{{ contentList }}"
+    wx:for-item="item"
+    wx:for-index="index"
+    wx:key="{{ index }}"
+  > 
+    {{ item }}
+  </view>
+</view>

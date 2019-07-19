@@ -1,0 +1,17 @@
+@import '../../common/common.wxss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.list-item {
+  margin-bottom: 12px;
+  color: #2c76fb;
+  border: 1px solid black;
+  border-radius: 4px;
+  flex: 1;
+  padding: 4px 6px;
+}
+.no-data-tip {
+  text-align: center;
+}
