@@ -11,6 +11,9 @@ Page({
     }, {
       id: 2,
       name: '格助词',
+    }, {
+      id: 3,
+      name: '敬语',
     }]
   },
   onLoad: function () {
