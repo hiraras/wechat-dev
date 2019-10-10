@@ -8,6 +8,9 @@ Page({
     }, {
       id: 1,
       name: '形容词',
+    }, {
+      id: 2,
+      name: '格助词',
     }]
   },
   onLoad: function () {
